@@ -1,0 +1,35 @@
+task-1 number guessing game
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int main() 
+{
+    srand(time(0)); 
+    int randomNumber = rand() % 200 + 1; 
+    int userGuess, attempts = 0;
+
+    cout << "Hey! Let's play Number Guessing Game.\n";
+
+    do {
+          cout << "Think of a number between 1 and 200: ";
+          cin >> userGuess;
+          attempts++;
+
+        if (userGuess > randomNumber) 
+        {
+            cout << "Guess too high! Try a lower number.\n";
+        } 
+        else if (userGuess < randomNumber) 
+        {
+            cout << "Guess too low! Try a higher number.\n";
+        }
+        else 
+        {
+            cout << Bravo! You guessed the right number " << randomNumber << " in " << attempts << " attempts.\n";
+        }
+    } while (userGuess != randomNumber);
+
+    return 0;
+}
