@@ -51,7 +51,7 @@ int main()
 
    default:
    {
-    cout << "\n Error! Invalid Operation!";
+    cout << "\n Error! Invalid Operation! Select from the given operations.";
     break;
    }
  }
