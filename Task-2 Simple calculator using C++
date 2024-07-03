@@ -1,0 +1,59 @@
+task-2 simple calculator
+
+#include<iostream>
+using namespace std;
+int main()
+ {
+   double num1,num2,result;
+   char operation;
+   cout<<"Enter first number\n";
+   cin>>num1;
+   cout<<" Enter second number\n";
+   cin>>num2; 
+
+  cout << "Press '+' for addition";
+  cout << "\nPress '-' for subtraction";
+  cout << "\nPress '*' for multiplication ";
+  cout << "\nPress '/' for division";
+  cout << "\nEnter the operation you want to perform :";
+
+  cin >> operation;
+
+  switch (operation)
+ {
+  case '+':
+  {
+    result=num1+num2;
+    cout << "Result:"<<result<<endl;
+    break;
+  }
+
+  case '-': 
+  {
+   result=num1-num2;
+   cout << "Result:"<<result<<endl;
+   break;
+  }
+
+  case '*': 
+  { 
+    result=num1*num2;
+    cout << "Result:"<<result<<endl;
+    break;
+  }
+
+  case '/': 
+  {
+   result=num1/num2;
+   cout << "Result:"<<result<<endl;
+   break;
+  }
+
+  default:
+  {
+    cout << "\n Error! Invalid Operation!";
+    break;
+  }
+}
+  return 0;
+}
