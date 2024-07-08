@@ -1,11 +1,13 @@
 task-2 simple calculator
 
 #include<iostream>
-using namespace std;
+#include<conio.h>
 int main()
  {
    double num1,num2,result;
    char operation;
+   clrscr();
+
    cout<<"Enter first number\n";
    cin>>num1;
    cout<<" Enter second number\n";
@@ -56,4 +58,5 @@ int main()
    }
  }
   return 0;
+  getch();
 }
