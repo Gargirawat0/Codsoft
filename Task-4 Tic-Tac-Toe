@@ -1,0 +1,120 @@
+#include <iostream>
+using namespace std;
+
+const int size = 3;
+char gameboard[size][size];
+
+void initializegameBoard()
+ {
+    for (int i = 0; i < size; ++i) 
+   {
+        for (int j = 0; j < size; ++j) 
+       {
+            gameboard[i][j] = ' ';
+        }
+    }
+}
+
+void printgameBoard()
+ {
+    cout << "  0 1 2\n";
+    for (int i = 0; i < size; ++i)
+    {
+        cout << i << " ";
+        for (int j = 0; j < size; ++j)
+        {
+            cout << gameboard[i][j];
+            if (j < size- 1) cout << "|";
+        }
+        cout << endl;
+        if (i < size- 1) cout << "  -+-+-\n";
+    }
+}
+
+bool isWinner(char player) 
+{
+    for (int i = 0; i < size; ++i) 
+   {
+        if ((gameboard[i][0] == player && gameboard[i][1] == player && gameboard[i][2] == player) ||
+            (gameboard[0][i] == player && gameboard[1][i] == player && gameboard[2][i] == player))
+        { 
+            return true;
+        }
+    }
+
+    
+    if ((gameboard[0][0] == player && gameboard[1][1] == player && gameboard[2][2] == player) ||
+        (gameboard[0][2] == player && gameboard[1][1] == player && gameboard[2][0] == player))
+    {
+        return true;
+    }
+
+    return false;
+}
+
+bool isDraw() 
+{
+    for (int i = 0; i < size; ++i) 
+    {
+        for (int j = 0; j < size; ++j) 
+        {
+            if (gameboard[i][j] == ' ') return false;
+        }
+    }
+    return true;
+}
+
+void playGame()
+ {
+    char currentPlayer = 'X';
+    bool gameWon = false;
+
+    while (!gameWon && !isDraw()) 
+    {
+        int row, col;
+        printBoard();
+        cout << "Player " << currentPlayer << ", enter your move (row and column): ";
+        cin >> row >> col;
+
+        if (row < 0 || row >= size || col < 0 || col >= size || gameboard[row][col] != ' ')
+        {
+            cout << "Error! Wrong move. Try again.\n";
+            continue;
+        }
+
+        gameboard[row][col] = currentPlayer;
+        gameWon = isWinner(currentPlayer);
+
+        if (!gameWon)
+       {
+            currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
+        }
+    }
+
+   printgameBoard();
+   if (gameWon) 
+    {
+        cout << "Congratulations! Player " << currentPlayer << " You win the game!\n";
+    }
+  else
+    {
+        cout << "It's a draw!\n";
+    }
+}
+
+bool playAgain() 
+{
+    char response;
+    cout << "Do you want to play again? (yes/no): ";
+    cin >> response;
+    return response == 'yes' || response == 'Yes';
+}
+
+int main() 
+{
+    do {
+        initializegameBoard();
+        playGame();
+       } while (playAgain());
+  return 0;
+}
